@@ -7,7 +7,7 @@ const pool = new Pool({
   host: 'db',
   database: 'users',
   password: 'password',
-  port: 5432,
+  port: 5432,    
 })
 
 router.get('/', async (req, res) => {

@@ -68,9 +68,9 @@ describe('PUT', () => {
 
 describe('DELETE', () => {
   test('delete an existing user', async () => {
-    const res = await request(app).delete('/49');
+    const res = await request(app).delete('/2');
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty('message', 'User with id 49 deleted');
+    expect(res.body).toHaveProperty('message', 'User with id 2 deleted');
   });
   
   test('should return a 404 error for a non-existent user', async () => {
