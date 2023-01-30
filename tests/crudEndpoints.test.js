@@ -62,7 +62,7 @@ describe('PUT', () => {
   test('should return a 404 error for a non-existent user', async () => {
     const res = await request(app).put('/100').send({ name: 'test_user', email: 'test_user@email.com' });
     expect(res.statusCode).toEqual(404);
-    expect(res.body).toHaveProperty('error', 'User with id 100 not found');
+    expect(res.body).toHaveProperty('error', 'User not found');
   });
 });
 
@@ -70,13 +70,13 @@ describe('DELETE', () => {
   test('delete an existing user', async () => {
     const res = await request(app).delete('/2');
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty('message', 'User with id 2 deleted');
+    expect(res.body).toHaveProperty('message', 'User deleted');
   });
   
   test('should return a 404 error for a non-existent user', async () => {
     const res = await request(app).delete('/100');
     expect(res.statusCode).toEqual(404);
-    expect(res.body).toHaveProperty('error', 'User with id 100 not found');
+    expect(res.body).toHaveProperty('error', 'User not found');
   });
 });
 
