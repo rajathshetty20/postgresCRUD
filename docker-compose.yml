@@ -13,6 +13,8 @@ services:
       - '3000:5432'
   server:
     image: postgres-crud
+    environment:
+      POSTGRES_DB: db
     build: './'
     depends_on:
       - db
