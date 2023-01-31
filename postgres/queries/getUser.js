@@ -10,7 +10,7 @@ const getUser = async (req) => {
             res.body = { error: 'User not found' };
         } else {
             res.status = 200;
-            res.body = result.rows;
+            res.body = result.rows[0];
         }
         client.release();
     } catch (err) {

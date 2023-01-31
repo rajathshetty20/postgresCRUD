@@ -1,7 +1,7 @@
 
 # postgresCRUD
 
-REST API to perform CRUD operations on a PostgreSQL database. 
+REST API to perform CRUD operations on a PostgreSQL database. Used Redis for caching.
 
 ### Installation
 To clone this repo, install dependencies and run the server and database as docker containers:

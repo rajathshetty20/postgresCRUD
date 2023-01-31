@@ -14,7 +14,7 @@ const updateUser = async (req) => {
             res.status = 404;
             res.body = { error: 'User not found' };
         } else {
-            const updatedUser = result.rows;
+            const updatedUser = result.rows[0];
             res.status = 200;
             res.body = updatedUser;
         }

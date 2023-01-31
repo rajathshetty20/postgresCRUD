@@ -18,7 +18,7 @@ describe('GET', () => {
     test('should return a specific user when passed an id', async () => {
       const res = await request(app).get('/1');
       expect(res.statusCode).toEqual(200);
-      expect(res.body[0]).toHaveProperty('id', 1);
+      expect(res.body).toHaveProperty('id', 1);
     });
   
     test('should return a 404 error for a non-existent user', async () => {
@@ -32,9 +32,9 @@ describe('POST', () => {
   test('should create a new user', async () => {
     const res = await request(app).post('/').send({ name: 'test_user', email: 'test_user@email.com' });
     expect(res.statusCode).toEqual(200);
-    expect(res.body[0]).toHaveProperty('id');
-    expect(res.body[0]).toHaveProperty('name', 'test_user');
-    expect(res.body[0]).toHaveProperty('email', 'test_user@email.com');
+    expect(res.body).toHaveProperty('id');
+    expect(res.body).toHaveProperty('name', 'test_user');
+    expect(res.body).toHaveProperty('email', 'test_user@email.com');
   });
 
   test('should return a 500 error if name is missing', async () => {
@@ -48,9 +48,9 @@ describe('PUT', () => {
   test('update an existing user', async () => {
     const res = await request(app).put('/1').send({ name: 'test_user', email: 'test_user@email.com' });
     expect(res.statusCode).toEqual(200);
-    expect(res.body[0]).toHaveProperty('id');
-    expect(res.body[0]).toHaveProperty('name', 'test_user');
-    expect(res.body[0]).toHaveProperty('email', 'test_user@email.com');
+    expect(res.body).toHaveProperty('id');
+    expect(res.body).toHaveProperty('name', 'test_user');
+    expect(res.body).toHaveProperty('email', 'test_user@email.com');
   });
 
   test('should return a 500 error if name is missing', async () => {

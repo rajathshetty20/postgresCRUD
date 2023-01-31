@@ -6,7 +6,7 @@ const addUser = async (req) => {
         const client = await pool.connect();
         const { name, email } = req.body;
         const result = await client.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *', [name, email]);
-        const newUser = result.rows;
+        const newUser = result.rows[0];
         res.status = 200;
         res.body = newUser;
         client.release();
