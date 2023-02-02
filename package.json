@@ -19,6 +19,7 @@
   "homepage": "https://github.com/rajathshetty20/postgresCRUD#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "mongoose": "^6.9.0",
     "pg": "^8.8.0",
     "redis": "^4.6.4"
   },

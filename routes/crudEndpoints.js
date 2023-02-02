@@ -7,6 +7,10 @@ const addUser = require('../postgres/queries/addUser');
 const updateUser = require('../postgres/queries/updateUser');
 const deleteUser = require('../postgres/queries/deleteUser');
 
+const addUserMD = require('../mongodb/queries/addUser');
+const deleteUserMD = require('../mongodb/queries/deleteUser');
+const updateUserMD = require('../mongodb/queries/updateUser');
+
 const redisClient = require('../redis/redisClient');
 
 router.get('/', async (req, res) => {
@@ -37,6 +41,7 @@ router.post('/', async (req, res) => {
   res.status(response.status).send(response.body);
   if(response.status==200){
     redisClient.set(id, JSON.stringify(response.body));
+    addUserMD(response); 
   }
 });
 
@@ -46,6 +51,7 @@ router.put('/:id', async (req, res) => {
   res.status(response.status).send(response.body);
   if(response.status==200){
     redisClient.set(id, JSON.stringify(response.body));
+    updateUserMD(response);
   }
 });
 
@@ -55,6 +61,7 @@ router.delete('/:id', async (req, res) => {
   res.status(response.status).send(response.body);
   if(response.status==200){
     redisClient.del(id);
+    deleteUserMD(id);
   }
 });
 
